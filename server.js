@@ -1,27 +1,11 @@
 import express from 'express';
-import compression from 'compression';
-import morgan from 'morgan';
-import path from 'path';
-import createServer from 'http';
-
-const normalizePort = port => parseInt(port, 10);
-const PORT = normalizePort(process.env.PORT || 5000)
 
 const app = express();
-const dev = app.get('env') !== "production"
+const port = 3000;
 
-if (!dev) {
-  app.use(compression())
-  app.use(morgan('common'))
+app.use(express.static('build'))
 
-  app.use(express.static(path.resolve(__dirname, 'build')))
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
-  })
-}
-
-app.listen(PORT, err => {
+app.listen(port, err => {
   if(err) throw err;
     console.log('server started')
 })
