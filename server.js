@@ -1,8 +1,8 @@
-import {createServer} from 'http';
-import {express} from 'express';
-import {compression} from 'compression';
-import {morgan} from 'morgan';
-import {path} from 'path';
+const {express} = require('express');
+const {compression} = require('compression');
+const {morgan} = require('morgan');
+const {path} = require('path');
+const {createServer} = require('http');
 
 const normalizePort = port => parseInt(port, 10);
 const PORT = normalizePort(process.env.PORT || 5000)
