@@ -10,5 +10,5 @@ app.get("*", (req, res) => res.sendFile(path.resolve("build", "index.html")))
 
 app.listen(port, err => {
   if(err) throw err;
-    console.log('server started')
+    console.log('server started on port ', port)
 })
