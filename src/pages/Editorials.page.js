@@ -22,10 +22,12 @@ import eighteen from '../assets/images/editorials/36.jpg';
 import nineteen from '../assets/images/editorials/37.jpg';
 
 const Editorials = () => {
+  const [drawer, setDrawer] = React.useState(false)
+
   return (
     <Container fluid>
-      <Nav />
-      <Row style={{marginTop: '100px'}}>
+      <Nav action={(isopen) => setDrawer(isopen)}/>
+      <Row style={{marginTop: '100px', filter: `${drawer ? "blur(1.5px)" : "blur(0)"}`}}>
 				<Col md={4}>
 					<img class="img-fluid" src={one} alt="" />
 					<img class="img-fluid" src={four} alt="" />

@@ -9,8 +9,7 @@ import {
   Shows,
   Editorials,
   Commercial,
-  About,
-  Contact
+  Info
 } from './pages';
 import './App.css';
 
@@ -19,11 +18,8 @@ function App() {
 	return (
     <Router>
       <Switch>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/contact">
-          <Contact />
+        <Route path="/info">
+          <Info />
         </Route>
         <Route path="/shows">
           <Shows />

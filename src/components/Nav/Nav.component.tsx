@@ -1,9 +1,14 @@
 import * as React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { Icon } from "../../components";
 import * as Styled from "./Nav.styles";
 
-const Nav: React.FC = (): JSX.Element => {
+interface Props {
+	action: (open: boolean) => void;
+}
+
+const Nav: React.FC<Props> = (props: Props): JSX.Element => {
+	const { action } = props;
 	const [drawer, setDrawer] = React.useState(false);
 	const [mobileDrawer, setMobileDrawer] = React.useState(false);
 
@@ -23,8 +28,7 @@ const Nav: React.FC = (): JSX.Element => {
 			</Col>
 			{/* <Styled.Spacer md={4} xs={4} /> */}
 			<Styled.Column md={4}>
-				<Styled.NavItem href="/about">about</Styled.NavItem>
-				<Styled.NavItem href="/contact">contact</Styled.NavItem>
+				<Styled.NavItem href="/info">info</Styled.NavItem>
 				<Styled.Portfolio>
 					<div
 						style={{
@@ -45,7 +49,12 @@ const Nav: React.FC = (): JSX.Element => {
 					</Styled.Drawer>
 				</Styled.Portfolio>
 			</Styled.Column>
-			<Styled.IconWrapper onClick={() => setMobileDrawer(!mobileDrawer)}>
+			<Styled.IconWrapper
+				onClick={() => {
+					action(!mobileDrawer);
+					setMobileDrawer(!mobileDrawer);
+				}}
+			>
 				<Styled.Hamburger>
 					<Icon name="bars" iconColor="#999" />
 				</Styled.Hamburger>
@@ -57,17 +66,8 @@ const Nav: React.FC = (): JSX.Element => {
 					<Styled.MobileItem href="/commercial">commercial</Styled.MobileItem>
 					<Styled.MobileItem href="/editorials">editorial</Styled.MobileItem>
 					<Styled.MobileItem href="/shows">shows</Styled.MobileItem>
-				</div>
-				<div
-					style={{
-						display: "flex",
-						flexDirection: "column",
-						height: "50%",
-						justifyContent: "flex-end",
-					}}
-				>
-					<Styled.MobileItem href="/about">about</Styled.MobileItem>
-					<Styled.MobileItem href="/contact">contact</Styled.MobileItem>
+
+					<Styled.MobileItem href="/info">info</Styled.MobileItem>
 				</div>
 			</Styled.SideDrawer>
 		</Styled.Wrapper>
