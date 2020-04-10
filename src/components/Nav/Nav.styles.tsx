@@ -153,5 +153,5 @@ export const SideDrawer = styled.div<MobileProps>`
   ${(props) => props.visible ? "transform: translateX(0)" : "transform: translateX(40vw)"};
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 20px 20px 5vh 20px;
 `;
