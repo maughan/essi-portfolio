@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   margin-top: 5vh;
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
   a {
     margin: 0 auto;
-    font-size: 20px;
+    font-size: 1rem;
     font-family: Raleway;
     text-decoration: none;
     color: black;
@@ -20,5 +20,6 @@ export const Wrapper = styled.div`
       color: lightgrey;
       transition: 0.3s;
     }
+  }
   }
 `;

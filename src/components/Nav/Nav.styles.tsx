@@ -8,12 +8,17 @@ export const NavItem = styled.a`
   color: black;
   padding-top: 5px;
   z-index: 100;
+  font-size: 1rem;
 
   &:hover {
     color: #999;
     transition: 0.3s;
     cursor: pointer !important;
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 1000px){
+    font-size: 3rem;
   }
 `;
 
@@ -40,6 +45,7 @@ export const Name = styled.a`
   color: black;
   padding-top: 10px;
   z-index: 100;
+  font-size: 20px;
 
   &:hover {
     color: #999;
@@ -61,12 +67,11 @@ export const Drawer = styled.div<DrawerProps>`
   background-color: white;
   display: flex;
   flex-direction: column;
-  z-index: -1;
-  position: fixed;
-  width: 150px;
+  z-index: -100;
+  position: inherit;
   transition: transform 0.3s;
-  ${(props) => props.visible ? "transform: translateY(5vh)" : "transform: translateY(-80px)"};
-  margin-left: -20px;
+  ${(props) => props.visible ? "transform: translateY(0)" : "transform: translateY(-280px)"};
+  margin: 0 auto;
   top: 0;
 `;
 
@@ -86,6 +91,7 @@ export const Column = styled(Col)`
   justify-content: space-between;
   padding-top: 5px;
   background-color: white;
+  height: 5vh;
 
   @media screen and (max-width: 1000px) {
     display: none;
@@ -99,11 +105,7 @@ export const Spacer = styled(Col)`
 `;
 
 export const MobileSpacer = styled(Col)`
-  display: none;
-
-  @media screen and (max-width: 1000px){
     display: block;
-  }
 `;
 
 export const Wrapper = styled(Row)`
@@ -114,9 +116,6 @@ export const Wrapper = styled(Row)`
   width: 100vw;
   z-index: 99999;
   background-color: white;
-
-  @media screen and (max-width: 1000px) {
-  }
 `;  
 
 export const Hamburger = styled.span`
@@ -129,8 +128,8 @@ export const Hamburger = styled.span`
 
 export const IconWrapper = styled.div`
   display: none;
-  right: 40px;
   top: 5px;
+  right: 40px;
 
   @media screen and (max-width: 1000px){
     display: inline;

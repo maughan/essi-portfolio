@@ -11,7 +11,7 @@ const Shows = () => {
 	return (
 		<Container fluid>
 			<Nav />
-			<Row style={{marginTop: '50px'}}>
+			<Row style={{marginTop: '100px'}}>
 				<Col md={4}>
 					<img class="img-fluid" src={one} alt="" />
 					<img class="img-fluid" src={three} alt="" />
