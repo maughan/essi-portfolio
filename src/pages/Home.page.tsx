@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import { Container, Row } from "react-bootstrap";
 import {commercialImages} from '../lib/commercial'
 import {editorialImages} from "../lib/editorial";
@@ -29,7 +29,7 @@ export function Home() {
 					<Title>shows</Title>
 					<ScrollWrapper>
 					<InnerWrapper>
-						{showsImages.map((image, index) => <img src={image} alt={'hi'} style={{width: '100%'}}/>)}
+						{showsImages.map((image, index) => <Image src={image} alt={'hi'}/>)}
 					</InnerWrapper>
 					</ScrollWrapper>
 				</Column>
@@ -37,7 +37,7 @@ export function Home() {
 					<Title>editorials</Title>
 					<ScrollWrapper>
 				<InnerWrapper>
-					{editorialImages.map((image, index) => <img src={image} alt={'hi'} style={{width: '100%'}}/>)}
+					{editorialImages.map((image, index) => <Image src={image} alt={'hi'}/>)}
 				</InnerWrapper>
 					</ScrollWrapper>
 				</Column>
@@ -45,7 +45,7 @@ export function Home() {
 					<Title>commercial</Title>
 					<ScrollWrapper>
 					<InnerWrapper>
-						{commercialImages.map((image, index) => <img src={image} alt={'hi'} style={{width: '100%'}}/>)}
+						{commercialImages.map((image, index) => <Image src={image} alt={'hi'} />)}
 					</InnerWrapper>
 					</ScrollWrapper>
 				</Column>
@@ -53,6 +53,26 @@ export function Home() {
 		</Container>
 	);
 }
+
+const scrollAnimation = keyframes`
+	from{
+		transform: translateY(0px);
+	}
+	to {
+		transform: translateY(-100%);
+	}
+`
+
+const Image = styled.img`
+	@media screen and (min-width: 700px) {
+		width: 100%;
+	}
+	
+	@media screen and (max-width: 700px) {
+		height: 100%;
+		width: content-box;
+	}
+`;
 
 const Name = styled.p`
 	font-family: Questrial;
@@ -115,7 +135,7 @@ const Column = styled.div`
 	align-items: center;
 	
 	@media screen and (max-width: 700px) {
-	width: 100%;
+		width: 100%;
 	}
 `;
 
@@ -131,6 +151,11 @@ const ColumnsWrapper = styled(Row)`
 	@media screen and (min-width: 1400px) {
 		width: 75%;
 	}
+	
+	@media screen and (max-width: 950px) {
+	margin-top: 150px;
+	margin-bottom: 5vh;
+	}
 `;
 
 const ScrollWrapper = styled.div`
@@ -139,7 +164,12 @@ const ScrollWrapper = styled.div`
 		display: none;
 	}
 	height: 100%;
+	width: 100%;
 	overflow-y: scroll;
+	@media screen and (max-width: 700px) {
+		overflow-y: hidden;
+		overflow-x: scroll;
+	}
 `;
 
 const InnerWrapper = styled.div`
@@ -148,7 +178,19 @@ const InnerWrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
-	width: 100%;
+	
+	@media screen and (min-width: 950px) {
+		width: 100%;
+	}
+	
+	@media screen and (max-width: 950px) {
+		flex-direction: row;
+		height: 100%;
+		width: fit-content;
+		justify-content: flex-start;
+		align-items: normal;
+	}
+
 `;
 
 export default Home;
